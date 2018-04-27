@@ -9,7 +9,7 @@ Nội dung lưu có thể là: logo, banner, hình ảnh tĩnh, các file địn
 
 
 ----
-##Sử dụng cache ở đâu?
+## Sử dụng cache ở đâu?
 1. Có thể được được ở phía server, client.
    ![](https://i.imgur.com/oXwZWSX.jpg)
    [Response cache] (https://www.embedthis.com/appweb/doc/users/caching.html)
@@ -80,7 +80,7 @@ Redis có hỗ trợ nhiều cấu trúc dữ liệu cơ bản(hash, list, set, 
 
 >Bộ nhớ cache có giới hạn, phải có phương án cập nhật dữ liệu cho cache một cách hợp lí để tối ưu được bộ nhớ cache.
 
-###1. Cache-aside:
+### 1. Cache-aside:
 
 ![](https://i.imgur.com/x17OdLz.png)
 
@@ -101,7 +101,7 @@ Redis có hỗ trợ nhiều cấu trúc dữ liệu cơ bản(hash, list, set, 
 
 `Memcached thường sử dụng cách này để lưu dữ liệu trong cache.`
 
-###2.Write-through: 
+### 2.Write-through: 
 
 ![](https://i.imgur.com/vnUaj8n.png)
 
@@ -113,7 +113,7 @@ Redis có hỗ trợ nhiều cấu trúc dữ liệu cơ bản(hash, list, set, 
 
  * Nhước điểm: Hầu hết các dữ liệu ghi trong cache đêu không được đọc ra -> không cần thiết lưu lại những dữ liệu này trong cache -> sử dụng TTL.
 
-###3.Write-behind (write-back)
+### 3.Write-behind (write-back)
 
  ![](https://i.imgur.com/AeYVpYm.png)
 
@@ -124,7 +124,7 @@ Redis có hỗ trợ nhiều cấu trúc dữ liệu cơ bản(hash, list, set, 
  * Ưu điểm: Việc sử dụng `Queue` giúp cho việc ghi nhanh hơn vì ghi đồng thời cả vào cache và database (bất đồng bộ).
  * Nhược điểm: 	Dữ liệu có thể bị mất khi mà cache bị hỏng -> `Queue` hỏng -> dữ liệu chưa được ghi xuống database.
 
-###4.Refresh-ahead
+### 4.Refresh-ahead
 
 ![](https://i.imgur.com/jFQt2tH.png)
 
@@ -139,7 +139,7 @@ Redis có hỗ trợ nhiều cấu trúc dữ liệu cơ bản(hash, list, set, 
 > Thuật toán cache khá đơn giản, chỉ cần một hash table để lưu giữ giá trị của từng key. Khi đó, việc set cache, và get cache sẽ có độ phức tạp trung bình là O(1).
 Tuy nhiên đời không như mơ, do memory là giới hạn, nên khi cache đầy, ta cần phải loại bỏ một số phần tử ra khỏi cache. Có hai thuật toán hay dùng đó là **`LRU`** và **`LFU`**.
 
-###1. Least Recently Used (LRU).
+### 1. Least Recently Used (LRU).
 
 ![](https://i.imgur.com/Z5jSoNN.png)
 
@@ -164,7 +164,7 @@ Tuy nhiên đời không như mơ, do memory là giới hạn, nên khi cache đ
  * Link tham khảo:
  [Thuật toán LRU cache](https://techtalk.vn/thuat-toan-lru-cache.html)
 
-###2. Thuật toán Least Frequently Used (LFU)
+### 2. Thuật toán Least Frequently Used (LFU)
 
 ![](https://i.imgur.com/bjcTEnr.jpg)
 
@@ -183,7 +183,7 @@ Tuy nhiên đời không như mơ, do memory là giới hạn, nên khi cache đ
    [An O(1) algorithm for implementing the LFU
 cache eviction scheme](http://dhruvbird.com/lfu.pdf)
 
-#2. Caffeine cache
+# 2. Caffeine cache
 
 > **Caffeine** là thư viện cache hiệu năng cao cho Java 8. Caffeine tương tự như Map, sự khác biệt cơ bản nhất là Map thì nó giữ toàn bộ các key-value cho đến khi được xóa một cách chủ động. Trong khi đó cache của Caffeine thì có cơ chế để tự động "trục xuất" các key-value một cách tự động.
 
@@ -209,7 +209,7 @@ cache eviction scheme](http://dhruvbird.com/lfu.pdf)
 
     [Install maven](https://www.mkyong.com/maven/how-to-install-maven-in-ubuntu/) 
 
-#3. Vai trò Cache
+# 3. Vai trò Cache
 
 * Tăng tốc độ phản hồi dữ liệu -> tăng tính trải nghiệm cho người dùng cảm thấy hệ thống nhanh hiệu quả.
 
